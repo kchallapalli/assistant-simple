@@ -35,25 +35,39 @@ If you need more information about the V1 API, you can go to the [Watson Assista
 
 1. In your IBM Cloud console, open the Watson Assistant service instance
 
-2. Click the **Import workspace** icon in the Watson Assistant service tool. Specify the location of the workspace JSON file in your local copy of the app project:
+2. Navigate to the **Skills** tab
+  
+3. Select the **Create skill** button
+  
+4. By default the Dialog skill is selected, if not select it and click **Next**
+
+5. Navigate to the **Import skill** tab
+
+6. Click the **Choose JSON File** button. Specify the location of the workspace JSON file in your local copy of the app project: (NOTE: Assuming that you have downloaded this whole git project to your local workstation)
 
     `<project_root>/training/bank_simple_workspace.json`
 
-3. Select **Everything (Intents, Entities, and Dialog)** and then click **Import**. The car dashboard workspace is created.
+7. Select **Everything (Intents, Entities, and Dialog)** and then click **Import**. The car dashboard workspace is created.
 
-4. Click the menu icon in the upper-right corner of the workspace tile, and then select **View details**.
+8. If you are within the skill, click on **Skills /** link at the top. Else go to next step.
 
-5. Click the ![Copy](readme_images/copy_icon.png) icon to copy the workspace ID to the clipboard.
+9. Navigate to the **Assistants** tab
 
-    ![Steps to get credentials](readme_images/assistant-simple.gif)
+10. Select the **Create assistant** button.  Give it a name (Eg: Assistant-Simple) and a description (optional).
 
-6. In the application folder, copy the *.env.example* file and create a file called *.env*
+11. Scroll down from within the Assistant-Simple assistant and select the **Add dialog skill** button. Then select the skill imported earlier from the tile. 
+
+12. In the Assistant-Simple assistant page, select the burger menu at the top right and then select **Settings**
+
+13. Navigate to the **API Details** tab and copy the Assistant ID 
+
+14. In your local workstation application folder, copy the *.env.example* file and create a file called *.env*
 
     ```
     cp .env.example .env
     ```
 
-7. Open the *.env* file and add the service credentials that you obtained in the previous step. The Watson SDK automatically locates the correct environmental variables for either `username`, `password`, and `url` or the `apikey` and `url` credentials found in the *.env* file.
+15. Open the *.env* file and add the service credentials that you obtained in the previous step. The Watson SDK automatically locates the correct environmental variables for either `username`, `password`, and `url` or the `apikey` and `url` credentials found in the *.env* file.
 
     Example *.env* file that configures the `apikey` and `url` for a Watson Assistant service instance hosted in the US East region:
 
@@ -86,7 +100,7 @@ If you need more information about the V1 API, you can go to the [Watson Assista
     ASSISTANT_IAM_APIKEY=ca2905e6-7b5d-4408-9192-e4d54d83e604
     ```
 
-8. Add the `ASSISTANT_ID` to the previous properties
+16. Add the `ASSISTANT_ID` to the previous properties (see step 13)
 
     ```
     ASSISTANT_ID=522be-7b41-ab44-dec3-g1eab2ha73c6
@@ -100,13 +114,13 @@ If you need more information about the V1 API, you can go to the [Watson Assista
     npm install
     ```
 
-1. Run the application
+2. Run the application
 
     ```
     npm start
     ```
 
-1. View the application in a browser at `localhost:3000`
+3. View the application in a browser at `localhost:3000`
 
 ## Deploying to IBM Cloud as a Cloud Foundry Application
 
@@ -116,21 +130,22 @@ If you need more information about the V1 API, you can go to the [Watson Assista
     ibmcloud login
     ```
 
-1. Target a Cloud Foundry organization and space.
+2. Target a Cloud Foundry organization and space.
 
     ```
     ibmcloud target --cf
     ```
 
-1. Edit the *manifest.yml* file. Change the **name** field to something unique.  
+3. Edit the *manifest.yml* file. Change the **name** field to something unique.  
   For example, `- name: my-app-name`.
-1. Deploy the application
+
+4. Deploy the application
 
     ```
     ibmcloud app push
     ```
 
-1. View the application online at the app URL.  
+5. View the application online at the app URL.  
 For example: https://my-app-name.mybluemix.net
 
 
